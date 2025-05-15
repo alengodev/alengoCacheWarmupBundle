@@ -1,0 +1,11 @@
+parameter:
+    default_sender_name: '%env(DEFAULT_SENDER_NAME)%'
+    default_sender_mail: '%env(DEFAULT_SENDER_MAIL)%'
+    admin_email: '%env(ADMIN_EMAIL)%'
+
+services:
+    Alengo\Bundle\AlengoCacheWarmupBundle\MessageHandler\SitemapCacheWarmupHandler:
+        arguments:
+            $defaultSenderName: '%default_sender_name%'
+            $defaultSenderMail: '%default_sender_mail%'
+            $adminEmail: '%admin_email%'
