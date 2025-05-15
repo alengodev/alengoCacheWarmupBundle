@@ -19,7 +19,7 @@
         "sulu/sulu": "^2.6",
         "symfony/config": "^7.2",
         "symfony/dependency-injection": "^7.2",
-        "symfony/doctrine-messenger": "7.2",
+        "symfony/doctrine-messenger": "^7.2",
         "symfony/framework-bundle": "^7.2",
         "symfony/http-foundation": "^7.2",
         "symfony/http-kernel": "^7.2",
