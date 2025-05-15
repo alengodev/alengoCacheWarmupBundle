@@ -42,3 +42,11 @@ framework:
         routing:
             'Alengo\Bundle\AlengoCacheWarmupBundle\Message\SitemapCacheWarmup': async
 ```
+
+.env variables to get an email notification when the cache warmup is done
+
+```dotenv
+    ADMIN_EMAIL=admin@sulu.rocks
+    DEFAULT_SENDER_NAME="Sulu // Notify"
+    DEFAULT_SENDER_MAIL=email@localhost
+```
