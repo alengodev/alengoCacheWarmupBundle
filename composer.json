@@ -19,12 +19,20 @@
         "sulu/sulu": "^2.6",
         "symfony/config": "^7.2",
         "symfony/dependency-injection": "^7.2",
+<<<<<<< HEAD
         "symfony/doctrine-messenger": "7.2.*",
+=======
+        "symfony/doctrine-messenger": "7.2",
+>>>>>>> develop
         "symfony/framework-bundle": "^7.2",
         "symfony/http-foundation": "^7.2",
         "symfony/http-kernel": "^7.2",
         "symfony/mailer": "^7.2",
+<<<<<<< HEAD
         "symfony/messenger": "7.2.*",
+=======
+        "symfony/messenger": "7.2",
+>>>>>>> develop
         "symfony/serializer": "^7.2",
         "symfony/twig-bundle": "^7.2"
     },
