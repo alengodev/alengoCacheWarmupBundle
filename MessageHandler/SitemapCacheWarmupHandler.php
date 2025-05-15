@@ -6,19 +6,22 @@ namespace Alengo\Bundle\AlengoCacheWarmupBundle\MessageHandler;
 
 use Alengo\Bundle\AlengoCacheWarmupBundle\Message\SitemapCacheWarmup;
 use Alengo\Bundle\AlengoCacheWarmupBundle\Service\CacheWarmupService;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 
 #[AsMessageHandler]
 class SitemapCacheWarmupHandler
 {
     public function __construct(
-        private readonly ?string $defaultSenderName = null,
-        private readonly ?string $defaultSenderMail = null,
-        private readonly ?string $adminEmail = null,
         private readonly CacheWarmupService $cacheWarmupService,
         private readonly MailerInterface $mailer,
+        private readonly LoggerInterface $logger,
+        private readonly string $defaultSenderName,
+        private readonly string $defaultSenderMail,
+        private readonly string $adminEmail,
     ) {
     }
 
@@ -32,8 +35,8 @@ class SitemapCacheWarmupHandler
         $totalUrls = \count($successfulUrls) + \count($failedUrls);
 
         $email = (new Email())
-            ->from($this->defaultSenderMail, $this->defaultSenderName)
-            ->to($this->adminEmail)
+            ->from(new Address($this->defaultSenderMail, $this->defaultSenderName))
+            ->to(new Address($this->adminEmail))
             ->subject('Cache warmed up')
             ->text(
                 \sprintf(
@@ -47,6 +50,12 @@ class SitemapCacheWarmupHandler
                 ),
             );
 
-        $this->mailer->send($email);
+        try {
+            $this->mailer->send($email);
+        } catch (\Throwable $e) {
+            $this->logger->error('Error sending Email: ' . $e->getMessage(), [
+                'exception' => $e,
+            ]);
+        }
     }
 }

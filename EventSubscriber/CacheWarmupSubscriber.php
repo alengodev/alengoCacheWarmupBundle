@@ -8,6 +8,7 @@ use Alengo\Bundle\AlengoCacheWarmupBundle\Message\SitemapCacheWarmup;
 use Sulu\Bundle\WebsiteBundle\Domain\Event\CacheClearedEvent;
 use Sulu\Component\Webspace\Manager\WebspaceManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 class CacheWarmupSubscriber implements EventSubscriberInterface
@@ -15,6 +16,7 @@ class CacheWarmupSubscriber implements EventSubscriberInterface
     public function __construct(
         private readonly WebspaceManagerInterface $webspaceManager,
         private readonly MessageBusInterface $bus,
+        private readonly KernelInterface $kernel,
     ) {
     }
 
@@ -27,7 +29,7 @@ class CacheWarmupSubscriber implements EventSubscriberInterface
 
     public function warmupCache(CacheClearedEvent $event): void
     {
-        $portalInformation = $this->webspaceManager->getPortalInformationsByWebspaceKey('prod', $event->getResourceWebspaceKey());
+        $portalInformation = $this->webspaceManager->getPortalInformationsByWebspaceKey($this->kernel->getEnvironment(), $event->getResourceWebspaceKey());
         $webspaceName = null;
         $webspaceKey = null;
         $sitemap = null;
