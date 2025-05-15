@@ -1,7 +1,7 @@
 ## Requirements
 
 * PHP 8.2
-* Symfony >=6.0
+* Symfony >=7.0
 
 ### Install the bundle
 
@@ -29,11 +29,16 @@ bin/console do:sch:up --force
 
 ### Configure the Bundle
 
-config/packages/alengo_cache_warmup_bundle.yaml
+config/packages/messages.yaml
 
 ```yaml
-alengo_cache_warmup_bundle:
+framework:
     messenger:
+        transports:
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    queue_name: 'async'
         routing:
             'Alengo\Bundle\AlengoCacheWarmupBundle\Message\SitemapCacheWarmup': async
 ```
