@@ -17,6 +17,8 @@ class CacheWarmupSubscriber implements EventSubscriberInterface
         private readonly WebspaceManagerInterface $webspaceManager,
         private readonly MessageBusInterface $bus,
         private readonly KernelInterface $kernel,
+        private readonly bool $allowCacheWarmup = true,
+        private readonly array $allowedWebspaces = [],
     ) {
     }
 
@@ -29,6 +31,10 @@ class CacheWarmupSubscriber implements EventSubscriberInterface
 
     public function warmupCache(CacheClearedEvent $event): void
     {
+        if (false === $this->allowCacheWarmup || !\in_array($event->getResourceWebspaceKey(), $this->allowedWebspaces, true)) {
+            return;
+        }
+
         $portalInformation = $this->webspaceManager->getPortalInformationsByWebspaceKey($this->kernel->getEnvironment(), $event->getResourceWebspaceKey());
         $webspaceName = null;
         $webspaceKey = null;
