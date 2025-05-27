@@ -23,6 +23,21 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        return new TreeBuilder('alengo_cache_warmup_bundle');
+        $treeBuilder = new TreeBuilder('alengo_cache_warmup');
+        $rootNode = $treeBuilder->getRootNode();
+
+        $rootNode
+            ->children()
+                ->booleanNode('enabled')
+                    ->defaultTrue()
+                ->end()
+                ->arrayNode('allowed_webspaces')
+                    ->scalarPrototype()->end()
+                    ->defaultValue([])
+                ->end()
+                ->scalarNode('notification')->end()
+            ->end();
+
+        return $treeBuilder;
     }
 }

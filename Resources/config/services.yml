@@ -9,6 +9,9 @@ services:
         autoconfigure: true
 
     Alengo\Bundle\AlengoCacheWarmupBundle\EventSubscriber\CacheWarmupSubscriber:
+        arguments:
+            $allowCacheWarmup: '%alengo_cache_warmup.enabled%'
+            $allowedWebspaces: '%alengo_cache_warmup.allowed_webspaces%'
         tags:
             - { name: 'kernel.event_subscriber' }
         autowire: true
@@ -21,5 +24,6 @@ services:
             $defaultSenderName: '%default_sender_name%'
             $defaultSenderMail: '%default_sender_mail%'
             $adminEmail: '%admin_email%'
+            $notification: '%alengo_cache_warmup.notification%'
         autowire: true
         autoconfigure: true

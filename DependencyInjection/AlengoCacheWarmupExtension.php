@@ -38,5 +38,9 @@ class AlengoCacheWarmupExtension extends Extension implements PrependExtensionIn
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->setParameter('alengo_cache_warmup.enabled', $config['enabled']);
+        $container->setParameter('alengo_cache_warmup.allowed_webspaces', $config['allowed_webspaces']);
+        $container->setParameter('alengo_cache_warmup.notification', $config['notification']);
     }
 }

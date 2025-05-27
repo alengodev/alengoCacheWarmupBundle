@@ -1,7 +1,7 @@
 ## Requirements
 
 * PHP 8.2
-* Symfony >=7.0
+* Symfony >=7.2
 
 ### Install the bundle
 
