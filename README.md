@@ -43,6 +43,19 @@ framework:
             'Alengo\Bundle\AlengoCacheWarmupBundle\Message\SitemapCacheWarmup': async
 ```
 
+### Configure the Cache Warmup
+
+config/packages/alengo_cache_warmup.yaml
+
+```yaml
+alengo_cache_warmup:
+    enabled: true
+    allowed_webspaces:
+        - 'webspace1'
+        - 'webspace2'
+    notification: 'email' # 'email' or 'none'
+```
+
 .env variables to get an email notification when the cache warmup is done
 
 ```dotenv
