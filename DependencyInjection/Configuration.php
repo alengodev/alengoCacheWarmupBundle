@@ -35,7 +35,9 @@ class Configuration implements ConfigurationInterface
                     ->scalarPrototype()->end()
                     ->defaultValue([])
                 ->end()
-                ->scalarNode('notification')->end()
+                ->scalarNode('notification')
+                    ->defaultValue('email')
+                ->end()
             ->end();
 
         return $treeBuilder;
