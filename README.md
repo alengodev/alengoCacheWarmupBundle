@@ -63,3 +63,5 @@ alengo_cache_warmup:
     DEFAULT_SENDER_NAME="Sulu // Notify"
     DEFAULT_SENDER_MAIL=email@localhost
 ```
+
+Be sure you have installed the [Symfony Messenger](https://symfony.com/doc/current/messenger.html) and configured it properly.
