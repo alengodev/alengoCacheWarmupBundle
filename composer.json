@@ -52,7 +52,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Alengo\\Bundle\\AlengoCacheWarmupBundle\\": ""
+            "Alengo\\Bundle\\AlengoCacheWarmupBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alengo\\Bundle\\AlengoCacheWarmupBundle\\Tests\\": "tests/"
         }
     },
     "config": {
