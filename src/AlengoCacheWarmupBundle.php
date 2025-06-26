@@ -13,8 +13,14 @@ declare(strict_types=1);
 
 namespace Alengo\Bundle\AlengoCacheWarmupBundle;
 
+use Alengo\Bundle\AlengoCacheWarmupBundle\DependencyInjection\AlengoCacheWarmupExtension;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class AlengoCacheWarmupBundle extends AbstractBundle
 {
+    public function getContainerExtension(): ?ExtensionInterface
+    {
+        return new AlengoCacheWarmupExtension();
+    }
 }
