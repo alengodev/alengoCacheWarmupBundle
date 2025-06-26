@@ -1,4 +1,8 @@
-## Requirements
+## Sulu AlengoCacheWarmupBundle
+This bundle provides a cache warmup mechanism for each URL in your sitemap.xml of your webspace(s).
+It uses Symfony Messenger to handle the warmup process asynchronously.
+
+### Requirements
 
 * PHP 8.2
 * Symfony >=7.2
