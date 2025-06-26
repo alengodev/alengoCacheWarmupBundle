@@ -13,12 +13,8 @@ declare(strict_types=1);
 
 namespace Alengo\Bundle\AlengoCacheWarmupBundle;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class AlengoCacheWarmupBundle extends Bundle
+class AlengoCacheWarmupBundle extends AbstractBundle
 {
-    public function build(ContainerBuilder $container): void
-    {
-    }
 }
