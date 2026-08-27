@@ -1,0 +1,9 @@
+/.idea
+/tools
+/Tests
+/.php-cs-fixer.cache
+/.php-cs-fixer.dist.php
+/rector.php
+/vendor
+/phpstan.dist.neon
+/composer.lock
