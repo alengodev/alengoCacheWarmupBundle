@@ -13,24 +13,13 @@ declare(strict_types=1);
 
 namespace Alengo\Bundle\AlengoCacheWarmupBundle\DependencyInjection;
 
-use Sulu\Bundle\PersistenceBundle\DependencyInjection\PersistenceExtensionTrait;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class AlengoCacheWarmupExtension extends Extension implements PrependExtensionInterface
+class AlengoCacheWarmupExtension extends Extension
 {
-    use PersistenceExtensionTrait;
-
-    /**
-     * Allow an extension to prepend the extension configurations.
-     */
-    public function prepend(ContainerBuilder $container): void
-    {
-    }
-
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
