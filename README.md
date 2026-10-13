@@ -4,8 +4,9 @@ It uses Symfony Messenger to handle the warmup process asynchronously.
 
 ### Requirements
 
-* PHP 8.2
-* Symfony >=7.2
+* PHP ^8.2
+* Sulu ^2.6 || ^3.0
+* Symfony ^7.2 || ^8.0
 
 ### Install the bundle
 
@@ -69,3 +70,9 @@ alengo_cache_warmup:
 ```
 
 Be sure you have installed the [Symfony Messenger](https://symfony.com/doc/current/messenger.html) and configured it properly.
+
+The bundle does not ship a messenger transport. If you use the Doctrine transport (`MESSENGER_TRANSPORT_DSN=doctrine://default`), install it in your project:
+
+```bash
+composer require symfony/doctrine-messenger
+```
